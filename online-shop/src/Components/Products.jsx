@@ -1,5 +1,3 @@
-//Componente frontend para mostrar la lista de productos y la interación con ellos.
-
 import './Products.css'
 import { AddToCartIcon } from './Icons'
 
