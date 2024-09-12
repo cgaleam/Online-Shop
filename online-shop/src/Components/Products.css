@@ -5,7 +5,7 @@ products {
     align-items: center;
   }
   
-  .products ul {
+  .products ul { /* lista de elementos */
     display: grid;
     grid-template-columns: repeat(
       auto-fit,
@@ -17,7 +17,7 @@ products {
     gap: 1rem;
   }
   
-  .products li {
+  .products li {  /* cada elemento de la lista */
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -28,7 +28,7 @@ products {
     padding: 1rem;
   }
   
-  .products h3 {
+  .products h3 {  /* encabezado o header */
     margin: 0;
   }
   
