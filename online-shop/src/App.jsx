@@ -5,7 +5,7 @@ import { useState } from "react"
 import { Header } from "./Components/Header.jsx"
 
 
-function useFilters (){   //hub que se encarga de los filtross
+function useFilters (){   //hub que se encarga de los filtros
   //inicializo los filtros
   const[filters, setFilters] = useState({
     category: 'all',
