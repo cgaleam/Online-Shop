@@ -4,10 +4,9 @@ import { Products } from "./Components/Products.jsx"
 import { useState } from "react"
 import { Header } from "./Components/Header.jsx"
 
-function App() {
 
-  //inicializo los productos y filtros
-  const[products]= useState(initialProducts)
+function useFilters (){   //hub que se encarga de los filtros
+  //inicializo los filtros
   const[filters, setFilters] = useState({
     category: 'all',
     minPrice: 0
@@ -21,10 +20,21 @@ function App() {
     })
   }
 
+  return { filterProducts, setFilters}
+}
+
+
+function App() {
+
+  //Inicializo los productos
+  const[products]= useState(initialProducts)
+
+  const {filterProducts, setFilters} = useFilters()
+
   //aplico los filtros a los productos
   const filteredProducts= filterProducts(products)  
 
-  //muestro los productos
+  //muestro los datos
   return (
     <>
     <Header changeFilters={setFilters}/>
