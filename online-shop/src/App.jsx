@@ -3,6 +3,7 @@ import {products as initialProducts} from "./mocks/products.json"
 import { Products } from "./Components/Products.jsx"
 import { useState } from "react"
 import { Header } from "./Components/Header.jsx"
+import { Cart } from "./Components/Cart.jsx"
 
 
 function useFilters (){   //hub que se encarga de los filtros
@@ -38,6 +39,7 @@ function App() {
   return (
     <>
     <Header changeFilters={setFilters}/>
+    <Cart/>
     <Products products={filteredProducts}/>
     </>
   )
