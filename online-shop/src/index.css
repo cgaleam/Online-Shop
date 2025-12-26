@@ -19,10 +19,10 @@
 
 /* Tema oscuro */
 [data-theme="dark"] {
-  --bg-color: #242424;
+  --bg-color: #1a202c;
   --text-color: rgba(255, 255, 255, 0.87);
-  --button-bg: #1a1a1a;
-  --button-border: #333333;
+  --button-bg: #2d3748;
+  --button-border: #4a5568;
   --link-color: #646cff;
   --link-hover: #535bf2;
 }
@@ -48,12 +48,15 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
-  padding-top: 80px; /* Espacio para el botón de tema fijo */
+  /* Removemos el padding-top ya que ahora no hay elementos fijos arriba */
 }
 
 h1 {

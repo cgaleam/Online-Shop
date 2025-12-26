@@ -1,4 +1,19 @@
-products {
+/* Variables para productos */
+:root {
+  --product-bg: #ffffff;
+  --product-text: #1a202c;
+  --product-border: rgba(0, 0, 0, 0.1);
+  --product-shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --product-bg: #2d3748;
+  --product-text: rgba(255, 255, 255, 0.87);
+  --product-border: rgba(255, 255, 255, 0.1);
+  --product-shadow: rgba(0, 0, 0, 0.3);
+}
+
+.products {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -21,29 +36,39 @@ products {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
-    border-radius: 4px;
-    background: #111;
-    color: #fff;
-    padding: 1rem;
+    box-shadow: 0 8px 24px var(--product-shadow);
+    border-radius: 16px;
+    background: var(--product-bg);
+    color: var(--product-text);
+    padding: 1.5rem;
+    border: 1px solid var(--product-border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .products li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px var(--product-shadow);
   }
   
   .products h3 {  /* encabezado o header */
     margin: 0;
+    color: var(--product-text);
+    font-weight: 600;
   }
   
   .products span {
     font-size: 1rem;
     opacity: .9;
+    color: var(--product-text);
   }
   
   .products img {
-    border-radius: 4px;
+    border-radius: 12px;
     width: 100%;
     aspect-ratio: 16/9;
     display: block;
     object-fit: cover;
-    background: #fff;
+    background: var(--product-bg);
   }
   
   /* Estilos para las acciones de productos */

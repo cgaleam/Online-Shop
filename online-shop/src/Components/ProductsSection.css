@@ -1,0 +1,73 @@
+/* Variables para la sección de productos */
+:root {
+  --products-bg: #ffffff;
+  --products-title: #1a202c;
+  --products-subtitle: #4a5568;
+  --products-border: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --products-bg: #1a202c;
+  --products-title: #f7fafc;
+  --products-subtitle: #e2e8f0;
+  --products-border: rgba(255, 255, 255, 0.1);
+}
+
+.products-section {
+  background: var(--products-bg);
+  padding: 80px 20px;
+  min-height: 60vh;
+}
+
+.products-header {
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.products-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--products-title);
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .products-title {
+  background: linear-gradient(135deg, #818cf8 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.products-subtitle {
+  font-size: 1.1rem;
+  color: var(--products-subtitle);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.products-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .products-section {
+    padding: 60px 15px;
+  }
+  
+  .products-header {
+    margin-bottom: 40px;
+  }
+  
+  .products-subtitle {
+    font-size: 1rem;
+  }
+}

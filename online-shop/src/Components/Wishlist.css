@@ -54,7 +54,7 @@
   min-width: 320px;
   padding: 24px;
   position: fixed;
-  right: 20px;
+  right: 20px; /* Alineado con el botón de wishlist */
   top: 80px;
   z-index: 1000;
   color: var(--wishlist-text);
@@ -289,7 +289,7 @@
 
 @media (max-width: 480px) {
   .wishlist-button {
-    right: 20px;
+    right: 80px;
     top: 80px; /* Debajo del carrito en móvil */
   }
   

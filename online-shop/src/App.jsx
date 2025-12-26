@@ -3,6 +3,8 @@ import {products as initialProducts} from "./mocks/products.json"
 import { Products } from "./Components/Products.jsx"
 import { useState, useMemo } from "react"
 import { Header } from "./Components/Header.jsx"
+import { HeroSection } from "./Components/HeroSection.jsx"
+import { ProductsSection } from "./Components/ProductsSection.jsx"
 import { Cart } from "./Components/Cart.jsx"
 import { Wishlist } from "./Components/Wishlist.jsx"
 import { ThemeToggle } from "./Components/ThemeToggle.jsx"
@@ -143,6 +145,7 @@ function App() {
       onClose={closeAllPanels}
     />
     <Header changeFilters={setFilters} />
+    <HeroSection />
     <Cart 
       cart={cart}
       addToCart={addToCart}
@@ -153,13 +156,15 @@ function App() {
       onToggle={openCart}
       onClose={closeAllPanels}
     />
-    <Products 
-      products={processedProducts}
-      addToCart={addToCart}
-      searchTerm={searchTerm}
-      toggleWishlist={toggleWishlist}
-      isInWishlist={isInWishlist}
-    />
+    <ProductsSection searchTerm={searchTerm}>
+      <Products 
+        products={processedProducts}
+        addToCart={addToCart}
+        searchTerm={searchTerm}
+        toggleWishlist={toggleWishlist}
+        isInWishlist={isInWishlist}
+      />
+    </ProductsSection>
     </>
   )
 }
