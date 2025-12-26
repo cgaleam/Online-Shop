@@ -1,0 +1,51 @@
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: var(--toggle-bg);
+  border: 2px solid var(--toggle-border);
+  color: var(--toggle-color);
+  
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Variables CSS para los temas */
+:root {
+  --toggle-bg: #ffffff;
+  --toggle-border: #e0e0e0;
+  --toggle-color: #333333;
+}
+
+[data-theme="dark"] {
+  --toggle-bg: #2a2a2a;
+  --toggle-border: #444444;
+  --toggle-color: #ffffff;
+}
+
+[data-theme="light"] {
+  --toggle-bg: #ffffff;
+  --toggle-border: #e0e0e0;
+  --toggle-color: #333333;
+}
