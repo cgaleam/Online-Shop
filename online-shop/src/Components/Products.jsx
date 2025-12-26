@@ -1,10 +1,34 @@
 import './Products.css'
 import { AddToCartIcon } from './Icons'
 
-export const Products = ({products, addToCart, searchTerm}) => {
+// Icono de corazón
+const HeartIcon = ({ filled = false }) => (
+  <svg 
+    width="20" 
+    height="20" 
+    viewBox="0 0 24 24" 
+    fill={filled ? "currentColor" : "none"} 
+    stroke="currentColor" 
+    strokeWidth="2"
+  >
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+  </svg>
+)
+
+export const Products = ({
+  products, 
+  addToCart, 
+  searchTerm, 
+  toggleWishlist, 
+  isInWishlist
+}) => {
     
     const handleAddToCart = (product) => {
         addToCart(product)
+    }
+
+    const handleToggleWishlist = (product) => {
+        toggleWishlist(product)
     }
 
     // Función para resaltar el texto de búsqueda
@@ -65,9 +89,17 @@ export const Products = ({products, addToCart, searchTerm}) => {
                                         </small>
                                     )}
                                 </div>
-                                <div>
+                                <div className="product-actions">
+                                    <button 
+                                        onClick={() => handleToggleWishlist(product)}
+                                        className={`wishlist-toggle ${isInWishlist(product.id) ? 'in-wishlist' : ''}`}
+                                        title={isInWishlist(product.id) ? 'Quitar de lista de deseos' : 'Agregar a lista de deseos'}
+                                    >
+                                        <HeartIcon filled={isInWishlist(product.id)} />
+                                    </button>
                                     <button 
                                         onClick={() => handleAddToCart(product)}
+                                        className="add-to-cart"
                                         title={`Agregar ${product.title} al carrito`}
                                     >
                                         <AddToCartIcon/>

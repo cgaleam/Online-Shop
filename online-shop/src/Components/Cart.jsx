@@ -1,28 +1,59 @@
 import "./Cart.css"
-import { useId } from "react"
+import { useEffect, useRef } from "react"
 import { CartIcon, ClearCartIcon} from "./Icons.jsx"
 
 
-export function Cart({ cart, addToCart, removeFromCart, clearCart, totalItems }) {
-    const cartCheckboxId = useId()   
-
+export function Cart({ 
+  cart, 
+  addToCart, 
+  removeFromCart, 
+  clearCart, 
+  totalItems, 
+  isOpen, 
+  onToggle, 
+  onClose 
+}) {
+    const cartRef = useRef(null)
     const isEmpty = cart.length === 0
 
     const getTotalPrice = () => {
         return cart.reduce((total, item) => total + (item.price * item.quantity), 0)
     }
 
+    // Cerrar al hacer clic fuera del carrito
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (cartRef.current && !cartRef.current.contains(event.target)) {
+                onClose()
+            }
+        }
+
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside)
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [isOpen, onClose])
+
     return (
         <>
-            <label className="cart-button" htmlFor={cartCheckboxId}>
+            <button 
+                className="cart-button"
+                onClick={onToggle}
+                aria-label="Abrir carrito"
+            >
                 <CartIcon />
                 {totalItems > 0 && (
                     <span className="cart-badge">{totalItems}</span>
                 )}
-            </label>
-            <input id={cartCheckboxId} type="checkbox" hidden/>
+            </button>
 
-            <aside className='cart'>
+            <aside 
+                ref={cartRef}
+                className={`cart ${isOpen ? 'cart-open' : ''}`}
+            >
                 <h3>🛒 Carrito</h3>
                 
                 {isEmpty ? (
