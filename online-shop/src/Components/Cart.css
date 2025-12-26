@@ -177,7 +177,7 @@
   height: 50px;
   justify-content: center;
   position: fixed;
-  right: 80px; /* Movido para no interferir con el botón de tema */
+  right: 80px; /* A la derecha del buscador compacto */
   top: 20px;
   transition: all 0.3s ease;
   width: 50px;
