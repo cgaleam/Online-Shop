@@ -1,6 +1,6 @@
 .theme-toggle {
   position: fixed;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
   z-index: 1000;
   
@@ -48,4 +48,14 @@
   --toggle-bg: #ffffff;
   --toggle-border: #e0e0e0;
   --toggle-color: #333333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .theme-toggle {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
 }

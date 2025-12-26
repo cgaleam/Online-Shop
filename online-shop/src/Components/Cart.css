@@ -30,7 +30,7 @@
   height: 100vh;
   background: var(--overlay-bg);
   backdrop-filter: blur(2px);
-  z-index: 999;
+  z-index: 998;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -52,7 +52,7 @@
   min-width: 320px;
   padding: 24px;
   position: fixed;
-  right: 20px; /* Alineado más a la derecha para que quede debajo del botón */
+  right: 20px; /* Alineado con el botón del carrito */
   top: 80px;
   z-index: 1000;
   color: var(--cart-text);
@@ -201,7 +201,7 @@
   height: 50px;
   justify-content: center;
   position: fixed;
-  right: 80px; /* Entre el buscador (140px) y el tema (20px) */
+  right: 20px; /* Ahora que el tema está abajo, más espacio disponible */
   top: 20px;
   transition: all 0.3s ease;
   width: 50px;

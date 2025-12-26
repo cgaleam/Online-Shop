@@ -32,7 +32,7 @@
   height: 100vh;
   background: var(--overlay-bg);
   backdrop-filter: blur(2px);
-  z-index: 998;
+  z-index: 997;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -219,7 +219,7 @@
   height: 50px;
   justify-content: center;
   position: fixed;
-  right: 140px; /* Entre el buscador y el carrito */
+  right: 80px; /* Entre el carrito (20px) y el buscador */
   top: 20px;
   transition: all 0.3s ease;
   width: 50px;
@@ -289,7 +289,7 @@
 
 @media (max-width: 480px) {
   .wishlist-button {
-    right: 80px;
+    right: 20px;
     top: 80px; /* Debajo del carrito en móvil */
   }
   

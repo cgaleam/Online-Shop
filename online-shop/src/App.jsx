@@ -7,6 +7,7 @@ import { Cart } from "./Components/Cart.jsx"
 import { Wishlist } from "./Components/Wishlist.jsx"
 import { ThemeToggle } from "./Components/ThemeToggle.jsx"
 import { CompactSearchBox } from "./Components/CompactSearchBox.jsx"
+import { CategoryFilter } from "./Components/CategoryFilter.jsx"
 import { useTheme } from "./hooks/useTheme.js"
 import { useCart } from "./hooks/useCart.js"
 import { useWishlist } from "./hooks/useWishlist.js"
@@ -29,7 +30,17 @@ function useFilters (){   //hub que se encarga de los filtros
     })
   }
 
-  return { filterProducts, setFilters}
+  //función para cambiar solo la categoría
+  const setCategory = (category) => {
+    setFilters(prev => ({ ...prev, category }))
+  }
+
+  //función para cambiar otros filtros (precio)
+  const setOtherFilters = (newFilters) => {
+    setFilters(newFilters)
+  }
+
+  return { filterProducts, setFilters: setOtherFilters, setCategory, currentCategory: filters.category}
 }
 
 
@@ -66,7 +77,7 @@ function App() {
   //Inicializo los productos
   const[products]= useState(initialProducts)
 
-  const {filterProducts, setFilters} = useFilters()
+  const {filterProducts, setFilters, setCategory, currentCategory} = useFilters()
 
   //Combinar filtros y búsqueda
   const processedProducts = useMemo(() => {
@@ -108,6 +119,10 @@ function App() {
   return (
     <>
     <ThemeToggle theme={theme} onToggle={toggleTheme} />
+    <CategoryFilter 
+      selectedCategory={currentCategory}
+      onChange={setCategory}
+    />
     <CompactSearchBox 
       searchTerm={searchTerm}
       onSearchChange={handleSearchChange}
