@@ -3,36 +3,75 @@ import { useId } from "react"
 import { CartIcon, ClearCartIcon} from "./Icons.jsx"
 
 
-export function Cart() {
-    const cartCheckboxId= useId()   
+export function Cart({ cart, addToCart, removeFromCart, clearCart, totalItems }) {
+    const cartCheckboxId = useId()   
+
+    const isEmpty = cart.length === 0
+
+    const getTotalPrice = () => {
+        return cart.reduce((total, item) => total + (item.price * item.quantity), 0)
+    }
 
     return (
         <>
             <label className="cart-button" htmlFor={cartCheckboxId}>
                 <CartIcon />
+                {totalItems > 0 && (
+                    <span className="cart-badge">{totalItems}</span>
+                )}
             </label>
             <input id={cartCheckboxId} type="checkbox" hidden/>
 
             <aside className='cart'>
-                <ul>
-                    <li>
-                    <img src="https://via.placeholder.com/150" alt="product"/>
-                    <div>
-                        <strong>Product Name</strong>
-                        <small>$ 5.00</small>
+                <h3>🛒 Carrito</h3>
+                
+                {isEmpty ? (
+                    <div className="cart-empty">
+                        <p>Tu carrito está vacío</p>
                     </div>
-                    <footer>
-                        <small>Qt=1</small>
-                        <button>+</button>
-                    </footer>
-                    </li>
-                </ul>
+                ) : (
+                    <>
+                        <ul>
+                            {cart.map(item => (
+                                <li key={item.id}>
+                                    <img src={item.thumbnail} alt={item.title}/>
+                                    <div className="item-info">
+                                        <strong>{item.title}</strong>
+                                        <small>${item.price}</small>
+                                    </div>
+                                    <footer>
+                                        <small>Qty: {item.quantity}</small>
+                                        <button 
+                                            onClick={() => addToCart(item)}
+                                            title="Aumentar cantidad"
+                                        >
+                                            +
+                                        </button>
+                                        <button 
+                                            onClick={() => removeFromCart(item.id)}
+                                            title="Disminuir cantidad"
+                                        >
+                                            -
+                                        </button>
+                                    </footer>
+                                </li>
+                            ))}
+                        </ul>
 
-                <button>
-                <ClearCartIcon />
-                </button>
+                        <div className="cart-total">
+                            <strong>Total: ${getTotalPrice().toFixed(2)}</strong>
+                        </div>
+
+                        <button 
+                            className="clear-cart"
+                            onClick={clearCart}
+                        >
+                            <ClearCartIcon />
+                            Vaciar carrito
+                        </button>
+                    </>
+                )}
             </aside>
-      
-    </>
+        </>
     )
 }
