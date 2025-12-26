@@ -219,7 +219,7 @@
   height: 50px;
   justify-content: center;
   position: fixed;
-  right: 80px; /* Entre el carrito (20px) y el buscador */
+  right: 80px; /* Más espacio ahora que no hay buscador arriba */
   top: 20px;
   transition: all 0.3s ease;
   width: 50px;

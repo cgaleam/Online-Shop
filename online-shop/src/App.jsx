@@ -8,7 +8,6 @@ import { ProductsSection } from "./Components/ProductsSection.jsx"
 import { Cart } from "./Components/Cart.jsx"
 import { Wishlist } from "./Components/Wishlist.jsx"
 import { ThemeToggle } from "./Components/ThemeToggle.jsx"
-import { CompactSearchBox } from "./Components/CompactSearchBox.jsx"
 import { CategoryFilter } from "./Components/CategoryFilter.jsx"
 import { useTheme } from "./hooks/useTheme.js"
 import { useCart } from "./hooks/useCart.js"
@@ -125,14 +124,6 @@ function App() {
       selectedCategory={currentCategory}
       onChange={setCategory}
     />
-    <CompactSearchBox 
-      searchTerm={searchTerm}
-      onSearchChange={handleSearchChange}
-      suggestions={searchSuggestions}
-      onSuggestionClick={handleSuggestionClick}
-      onClear={handleClearSearch}
-      placeholder="Buscar..."
-    />
     <Wishlist 
       wishlist={wishlist}
       removeFromWishlist={removeFromWishlist}
@@ -144,8 +135,24 @@ function App() {
       onToggle={openWishlist}
       onClose={closeAllPanels}
     />
-    <Header changeFilters={setFilters} />
+    <Header 
+      searchTerm={searchTerm}
+      onSearchChange={handleSearchChange}
+      suggestions={searchSuggestions}
+      onSuggestionClick={handleSuggestionClick}
+      onClear={handleClearSearch}
+      onFiltersChange={setFilters}
+    />
     <HeroSection />
+    <ProductsSection searchTerm={searchTerm}>
+      <Products 
+        products={processedProducts}
+        addToCart={addToCart}
+        searchTerm={searchTerm}
+        toggleWishlist={toggleWishlist}
+        isInWishlist={isInWishlist}
+      />
+    </ProductsSection>
     <Cart 
       cart={cart}
       addToCart={addToCart}
@@ -156,15 +163,6 @@ function App() {
       onToggle={openCart}
       onClose={closeAllPanels}
     />
-    <ProductsSection searchTerm={searchTerm}>
-      <Products 
-        products={processedProducts}
-        addToCart={addToCart}
-        searchTerm={searchTerm}
-        toggleWishlist={toggleWishlist}
-        isInWishlist={isInWishlist}
-      />
-    </ProductsSection>
     </>
   )
 }
