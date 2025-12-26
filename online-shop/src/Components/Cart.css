@@ -30,7 +30,7 @@
   min-width: 320px;
   padding: 24px;
   position: fixed;
-  right: 20px;
+  right: 20px; /* Alineado más a la derecha para que quede debajo del botón */
   top: 80px;
   z-index: 1000;
   color: var(--cart-text);
@@ -177,7 +177,7 @@
   height: 50px;
   justify-content: center;
   position: fixed;
-  right: 80px; /* A la derecha del buscador compacto */
+  right: 80px; /* Entre el buscador (140px) y el tema (20px) */
   top: 20px;
   transition: all 0.3s ease;
   width: 50px;
