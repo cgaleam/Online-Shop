@@ -1,9 +1,29 @@
 import { PriceFilter } from './PriceFilter.jsx'
+import { UserMenu } from './Auth/UserMenu.jsx'
+import { useAuth } from '../contexts/AuthContext.jsx'
 import './Header.css'
 
-export function Header({ searchTerm, onSearchChange, suggestions, onSuggestionClick, onClear, onFiltersChange }) {
+export function Header({ searchTerm, onSearchChange, suggestions, onSuggestionClick, onClear, onFiltersChange, onOpenLogin, onOpenSignup }) {
+    const { user } = useAuth()
+
     return (
         <header className="main-header">
+            <div className="header-top-bar">
+                <div className="header-auth-buttons">
+                    {user ? (
+                        <UserMenu />
+                    ) : (
+                        <>
+                            <button className="auth-button-header login-btn" onClick={onOpenLogin}>
+                                Iniciar Sesión
+                            </button>
+                            <button className="auth-button-header signup-btn" onClick={onOpenSignup}>
+                                Registrarse
+                            </button>
+                        </>
+                    )}
+                </div>
+            </div>
             <div className="header-content">
                 <div className="brand-section">
                     <h1 className="brand-title">

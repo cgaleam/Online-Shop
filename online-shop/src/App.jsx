@@ -9,6 +9,7 @@ import { Cart } from "./Components/Cart.jsx"
 import { Wishlist } from "./Components/Wishlist.jsx"
 import { ThemeToggle } from "./Components/ThemeToggle.jsx"
 import { CategoryFilter } from "./Components/CategoryFilter.jsx"
+import { AuthModal } from "./Components/Auth/AuthModal.jsx"
 import { useTheme } from "./hooks/useTheme.js"
 import { useCart } from "./hooks/useCart.js"
 import { useWishlist } from "./hooks/useWishlist.js"
@@ -49,6 +50,20 @@ function App() {
 
   //Hook para manejo de temas
   const { theme, toggleTheme } = useTheme()
+
+  //Estado para el modal de autenticación
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+  const [authModalView, setAuthModalView] = useState("login")
+
+  const openLoginModal = () => {
+    setAuthModalView("login")
+    setIsAuthModalOpen(true)
+  }
+
+  const openSignupModal = () => {
+    setAuthModalView("signup")
+    setIsAuthModalOpen(true)
+  }
 
   //Hook para manejo del carrito
   const { cart, addToCart, removeFromCart, clearCart, getTotalItems } = useCart()
@@ -119,6 +134,11 @@ function App() {
   //muestro los datos
   return (
     <>
+    <AuthModal 
+      isOpen={isAuthModalOpen} 
+      onClose={() => setIsAuthModalOpen(false)}
+      initialView={authModalView}
+    />
     <ThemeToggle theme={theme} onToggle={toggleTheme} />
     <CategoryFilter 
       selectedCategory={currentCategory}
@@ -142,6 +162,8 @@ function App() {
       onSuggestionClick={handleSuggestionClick}
       onClear={handleClearSearch}
       onFiltersChange={setFilters}
+      onOpenLogin={openLoginModal}
+      onOpenSignup={openSignupModal}
     />
     <HeroSection />
     <ProductsSection searchTerm={searchTerm}>

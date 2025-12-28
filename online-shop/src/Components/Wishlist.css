@@ -219,8 +219,8 @@
   height: 50px;
   justify-content: center;
   position: fixed;
-  right: 80px; /* Más espacio ahora que no hay buscador arriba */
-  top: 20px;
+  right: 80px;
+  top: 10px; /* Alineado con la barra superior */
   transition: all 0.3s ease;
   width: 50px;
   z-index: 1001;
