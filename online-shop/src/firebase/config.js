@@ -1,0 +1,32 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBKlfkJTSGx3ukGQmlFaLT8V2rhwAJ_ZHE",
+  authDomain: "online-shop-a61e8.firebaseapp.com",
+  projectId: "online-shop-a61e8",
+  storageBucket: "online-shop-a61e8.firebasestorage.app",
+  messagingSenderId: "113232464918",
+  appId: "1:113232464918:web:9def0b8698fd4d3a0fb937",
+  measurementId: "G-R3PVGP5C8G"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Analytics solo en navegador
+const analytics = typeof window !== "undefined" && firebaseConfig.measurementId
+  ? getAnalytics(app)
+  : null;
+
+// Exportamos los servicios que vamos a usar
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export { app, analytics };
